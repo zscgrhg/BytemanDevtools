@@ -1,0 +1,12 @@
+RULE hello
+CLASS HomeController
+METHOD hello
+AT ENTRY
+IF true
+DO
+debug("hello hello ya");
+ENDRULE
+
+
+
+
