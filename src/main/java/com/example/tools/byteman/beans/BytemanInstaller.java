@@ -32,7 +32,8 @@ public class BytemanInstaller implements CommandLineRunner {
 
     public void installByteman() throws FileNotFoundException {
         String pid = ManagementFactory.getRuntimeMXBean().getName().split("@")[0];
-        org.jboss.byteman.agent.install.Install.main(new String[]{"-b",
+        org.jboss.byteman.agent.install.Install.main(new String[]{
+                "-b",
                 "-Dorg.jboss.byteman.transform.all",
                 //"-Dorg.jboss.byteman.verbose",
                 "-Dorg.jboss.byteman.debug",
@@ -48,7 +49,7 @@ public class BytemanInstaller implements CommandLineRunner {
 
     public void scan() {
         Reflections reflections = new Reflections(new ConfigurationBuilder()
-                .setUrls(ClasspathHelper.forClassLoader())
+                .setUrls(ClasspathHelper.forPackage("com.example.tools.byteman.script"))
                 .setScanners(new ResourcesScanner()));
         Set<String> scripts =
                 reflections.getResources(Pattern.compile(".*\\.btm"));
