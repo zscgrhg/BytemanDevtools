@@ -49,7 +49,7 @@ public class BytemanInstaller implements CommandLineRunner {
 
     public void scan() {
         Reflections reflections = new Reflections(new ConfigurationBuilder()
-                .setUrls(ClasspathHelper.forPackage("com.example.tools.byteman.script"))
+                .setUrls(ClasspathHelper.forPackage("com.example.tools.btm"))
                 .setScanners(new ResourcesScanner()));
         Set<String> scripts =
                 reflections.getResources(Pattern.compile(".*\\.btm"));
