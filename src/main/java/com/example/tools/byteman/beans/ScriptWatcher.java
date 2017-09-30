@@ -76,9 +76,7 @@ public class ScriptWatcher extends FileAlterationListenerAdaptor {
     public void installAll() {
         for (File watchedFolder : watchedFolders) {
             try {
-                for (File file : watchedFolder.listFiles()) {
-                    installBTM(file);
-                }
+                installBTM(watchedFolder);
             } catch (Exception e) {
                 e.printStackTrace();
             }
