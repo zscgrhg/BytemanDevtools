@@ -34,8 +34,9 @@ public class BytemanInstaller implements CommandLineRunner {
         String pid = ManagementFactory.getRuntimeMXBean().getName().split("@")[0];
         org.jboss.byteman.agent.install.Install.main(new String[]{
                 "-b",
+                "-p",String.valueOf(props.getPort()),
                 "-Dorg.jboss.byteman.transform.all",
-                //"-Dorg.jboss.byteman.verbose",
+                "-Dorg.jboss.byteman.verbose",
                 "-Dorg.jboss.byteman.debug",
                 pid});
         scan();

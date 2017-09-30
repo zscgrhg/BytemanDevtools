@@ -65,7 +65,9 @@ public class ScriptWatcher extends FileAlterationListenerAdaptor {
 
     public void clearBTM() {
         try {
-            org.jboss.byteman.agent.submit.Submit.main(new String[]{"-u"});
+            org.jboss.byteman.agent.submit.Submit.main(new String[]{
+                    "-p",String.valueOf(props.getPort()),
+                    "-u"});
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,7 +95,11 @@ public class ScriptWatcher extends FileAlterationListenerAdaptor {
             try {
                 String btm = file.getCanonicalPath();
                 if (btm.endsWith(".btm")) {
-                    org.jboss.byteman.agent.submit.Submit.main(new String[]{"-l", btm});
+                    org.jboss.byteman.agent.submit.Submit.main(
+                            new String[]{"-l",
+                            "-p",
+                            String.valueOf(props.getPort()),
+                            btm});
                 }
             } catch (Exception e) {
                 e.printStackTrace();
